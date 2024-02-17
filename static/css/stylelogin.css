@@ -1,0 +1,21 @@
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+  }
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two columns with equal width */
+}
+
+.left-div {
+    grid-column: 1; /* Places left div in the first column */
+    /* Styles for left div */
+}
+
+.right-div {
+    grid-column: 2; /* Places right div in the second column */
+    /* Styles for right div */
+}

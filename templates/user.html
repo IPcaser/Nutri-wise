@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nutriwise</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/stylelogin.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Style for the list */
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Style for each list item */
+        .user-item {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Style for username */
+        .username {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Style for nutrients */
+        .nutrients {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Nutriwise</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Logout</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+        <div><form action="/logout" method="post">
+            <input style="background-color: red; margin-right: 40px;" class="btn btn-danger" type="submit" value="Logout">
+        </form></div>
+    </nav>
+    <hr>
+
+
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap -m-4">
+
+                {% for item in items %}
+
+                <form action="/addcal" style="margin-left: 2rem;" method="post">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="width: auto;">
+                        <a class="block relative h-48 rounded o0verflow-hidden">
+                            <img alt="ecommerce" class="object-cover object-center w-full h-full block"
+                                src="static/Images/{{item.name}}.jpg">
+                        </a>
+                        <div class="mt-4">
+                            <h2 class="text-gray-900 title-font text-lg font-medium">{{item.name}}</h2>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input style="display: none;" type="text" name="name" value="{{item.name}}">
+                            <input type="text" name="intake" class="form-control" placeholder="Enter Intake"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">gms</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; ">
+                            <input style="background-color: rgb(50, 18, 177);" class="btn btn-primary" type="submit"
+                                value="Add">
+                        </div>
+
+
+                    </div>
+                </form>
+
+                {% endfor %}
+                
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item" style="display: flex; justify-content: flex-start;">
+                            <a class="page-link" href="{{ prev }}">Previous</a>
+                        </li>
+                        <li class="page-item" style="display: flex; justify-content: flex-end;">
+                            <a class="page-link" href="{{ next }}">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div style="margin-left: 20px;">
+                    <form action="/userd" method="post">
+                    <button style="background: blue;" type="submit" class="btn btn-primary">Apply</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <div class="main-container">
+        
+        <div class="left-div" style="width: 70%;margin-left: 30px;padding-right: 20px;">
+
+
+            <ul class="user-list">
+                <!-- Loop through each user -->
+                <h2><strong> Current Consumption</strong></h2>
+                <hr style="border: 2px solid black;margin-bottom: 10px;margin-top: 10px;">
+                {% for nutrient, value in params.items() %}
+
+                <li class="user-item" style="padding-right: 20px;">
+                    <!-- Display username -->
+                    <span class="username">{{ nutrient }}</span>
+                    <br>
+                    <!-- Loop through each nutrient for the user -->
+                    <span class="nutrients">
+                        {{ value }}g{% if not loop.last %}{% endif %}
+
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+            <ul class="user-list">
+                <!-- Loop through each user -->
+                <h2><strong> Nutrient Values</strong></h2>
+                <hr style="border: 2px solid black;margin-bottom: 10px;margin-top:10px;">
+                {% for nutrient, value in nutri.items() %}
+
+                <li class="user" style="padding-right: 20px;margin-top: 10px;">
+                    <!-- Display username -->
+                    <span class="username">{{ nutrient }}</span>
+                    <br>
+                    <!-- Loop through each nutrient for the user -->
+                    <span class="nutrients">
+                        {{ value }}g{% if not loop.last %}{% endif %}
+
+                    </span>
+                </li>
+                {% endfor %}
+            </ul><br><br>
+            <h2><strong>Health Status</strong></h2><hr>
+            <p>{{msg}}</p>
+
+
+
+
+        </div>
+        <div class="right-div">
+            <center>
+                <span style="height: 70%; width: 70%; ">
+                    <img style="height: 70%; width: 70%; border: 3px solid black;" src="{{img}}/donut_chart.png">
+                </span>
+                <span style="height: 70%; width: 70%; ">
+                    <img style="height: 70%; width: 70%; border: 3px solid black;margin-top: 20px;"
+                        src="{{img}}/bar_chart.png">
+                </span>
+            </center>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
