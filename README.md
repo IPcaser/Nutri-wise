@@ -27,5 +27,4 @@ Our project is a comprehensive Nutrient Tracker designed to monitor and analyze 
 ## Video Url
 [Link to Demo Video](video_url)
 
-## Remarks
-- Any additional things you want to share
+
