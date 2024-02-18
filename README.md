@@ -25,6 +25,6 @@ Our project is a comprehensive Nutrient Tracker designed to monitor and analyze 
 [https://footracker.pythonanywhere.com/]
 
 ## Video Url
-[https://drive.google.com/file/d/1n9-3yTj8b5xhR7O8dQfhF_sFnPIHHxy7/view?usp=sharing]
+[https://drive.google.com/drive/folders/1gB1xw5bG_hZQ2HNwiA7eKl1UcQtykQP_?usp=sharing]
 
 
