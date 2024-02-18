@@ -1,6 +1,6 @@
-# [Team Id] [Team Name]
+# HM0021 Triloka Tech
     HM0021  Triloka Tech
-## [Problem statement Title]
+## Health Tracker
 Develop a solution that helps individuals track their daily nutritional intake and provides personalized recommendations for a healthier lifestyle
 ## Description
 Our project is a comprehensive Nutrient Tracker designed to monitor and analyze daily nutrient consumption. Users can input the grams of various foods they consume daily, and the system provides detailed information on proteins, carbs, fats, and fiber intake. The platform offers a visual representation through pie charts for a quick overview
@@ -22,7 +22,7 @@ Our project is a comprehensive Nutrient Tracker designed to monitor and analyze 
 
 
 ## Deployed Url
-[Link to Deployed Solution](gfgpccoe.in)
+[https://footracker.pythonanywhere.com/](gfgpccoe.in)
 
 ## Video Url
 [Link to Demo Video](video_url)
