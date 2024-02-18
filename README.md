@@ -22,7 +22,7 @@ Our project is a comprehensive Nutrient Tracker designed to monitor and analyze 
 
 
 ## Deployed Url
-[https://footracker.pythonanywhere.com/](gfgpccoe.in)
+[https://footracker.pythonanywhere.com/]
 
 ## Video Url
 [Link to Demo Video](video_url)
